@@ -4,9 +4,8 @@ def warn() -> None:
     print("[Warning] Please run this script by importing it into another file and running the function export")
 
 def export(bin: list[list[int]]):
-    bin
     pixel_size, width, height = set_dimensions(bin)
-    image, draw = (bin, width, height)
+    image, draw = create_image(bin, width, height) 
     draw_image(bin, draw, pixel_size)
     return image
 
@@ -23,7 +22,7 @@ def create_image(bin, width, height):
 
 def draw_image(bin, draw, pixel_size):
     # Loop through the binary matrix and draw each pixel
-    for y, row in enumerate(bin_image):
+    for y, row in enumerate(bin):
         for x, pixel in enumerate(row):
             if pixel == 1:
                 # Draw a filled rectangle where there is a 1

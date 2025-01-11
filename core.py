@@ -16,11 +16,9 @@ def print_bin() -> None:
     for row in bin:
         for cell in row:
             if cell != 0:
-                #print(" ", end="")
                 print(" #", end="")
             else:
                 print("  ", end="")
-                #print(" ", end="")
         print()
 
 
@@ -66,14 +64,19 @@ def main() -> None:
     else:
         print("Invalid choice. Please select 1, 2, or 3.")
     
-    out = input("Do you want to view geometry before writing it to an image ? ([Y]es/[N]o) ")
+    out = input("Do you want to view geometry before writing it to an image? ([Y]es/[N]o) ")
     if out.lower() == "y" or out.lower() == "yes":
         print_bin()
-    else:
-        pass
-    image = export(bin)    
-    image.show()  # This will display the image
-    # image.save("binary_image.png")  # Uncomment to save the image
+     
+    image = export(bin)
+
+    view = input("Preview Image before writing it to file? ([Y]es/[N]o) ")
+    if view.lower() == "y" or view.lower() == "yes":
+        image.show()  # This will display the image
+    
+    name = input("Enter filename (leave empty to cancel the save) ")
+    if name:
+        image.save(f"{name}.png")
 
 
 if __name__ == "__main__":
